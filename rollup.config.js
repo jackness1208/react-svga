@@ -18,7 +18,7 @@ function buildBanner(type) {
 const IS_PUBLISH = process.env.NODE_ENV === 'production'
 
 const config = {
-  input: './src/index.ts',
+  input: './src/index.tsx',
   output: [],
   plugins: [
     nodeResolve({ jsnext: true }),
@@ -28,7 +28,7 @@ const config = {
       typescript: require('typescript')
     })
   ],
-  external: ['@yy/allblue-qiankun', 'fetch-polyfill']
+  external: ['react', 'svga.lite']
 }
 
 export default [

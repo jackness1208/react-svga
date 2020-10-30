@@ -26,6 +26,7 @@
   "description": "",
   "dependencies": {
     "@babel/core": "^7.6.4",
+    "@babel/preset-react": "^7.12.1",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
@@ -35,7 +36,10 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "pug": "^2.0.4",
     "pug-loader": "^2.4.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "style-loader": "^1.0.0",
+    "svga.lite": "^1.4.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^2.2.0",
     "webpack": "^4.41.0",

@@ -1,5 +1,14 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react'
-import { Downloader, Parser, Player, EVENT_TYPES, options, VideoEntity } from 'svga.lite'
+import { Downloader, Parser, Player, options, VideoEntity } from 'svga.lite'
+
+export enum EVENT_TYPES {
+  START = 'start',
+  PROCESS = 'process',
+  PAUSE = 'pause',
+  STOP = 'stop',
+  END = 'end',
+  CLEAR = 'clear'
+}
 
 /** 事件 hooks */
 export type OnEventHandle = (type: EVENT_TYPES) => any

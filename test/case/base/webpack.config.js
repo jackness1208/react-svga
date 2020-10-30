@@ -71,7 +71,7 @@ const wConfig = {
     var entryPath = path.join(iSrcRoot, 'entry')
 
     if (fs.existsSync(entryPath)) {
-      var fileList = extFs.readFilesSync(entryPath, /\.(js|tsx?)$/)
+      var fileList = extFs.readFilesSync(entryPath, /\.(js|jsx?)$/)
       fileList.forEach((str) => {
         var key = path.basename(str).replace(/\.[^.]+$/, '')
         if (key) {
@@ -105,7 +105,8 @@ const wConfig = {
                 if (!config.babelrc) {
                   return {
                     babelrc: false,
-                    cacheDirectory: true
+                    cacheDirectory: true,
+                    presets: ['@babel/preset-react']
                   }
                 } else {
                   return {}
@@ -134,11 +135,11 @@ const wConfig = {
         ]
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svga)$/,
         use: {
           loader: 'url-loader',
           options: {
-            limit: 1,
+            limit: 20000,
             name: '[name]-[hash:8].[ext]',
             chunkFilename: 'async_component/[name]-[chunkhash:8].js',
             outputPath: path.relative(config.alias.jsDest, config.alias.imagesDest),
