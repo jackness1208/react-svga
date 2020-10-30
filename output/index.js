@@ -1,5 +1,5 @@
 /*!
- * react-svga cjs 0.1.0
+ * react-svga cjs 0.1.1
  * (c) 2020 - 2020 jackness
  * Released under the MIT License.
  */
