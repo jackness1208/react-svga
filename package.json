@@ -1,0 +1,69 @@
+{
+  "version": "0.1.0",
+  "main": "output/index.js",
+  "module": "output/index.esm.js",
+  "types": "output/index.d.ts",
+  "files": [
+    "output"
+  ],
+  "ignore": [
+    "test"
+  ],
+  "eslintConfig": {
+    "env": {
+      "jest": true
+    },
+    "extends": [
+      "yyl-react"
+    ]
+  },
+  "eslintIgnore": [
+    "/node_modules",
+    "/output",
+    "/test"
+  ],
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "quoteProps": "consistent",
+    "trailingComma": "none",
+    "printWidth": 100
+  },
+  "scripts": {
+    "eslint": "eslint --ext=jsx,ts,tsx ./",
+    "prettier": "prettier --write ./**",
+    "dev": "rollup --config ./rollup.config.js",
+    "d": "rollup --config ./rollup.config.js",
+    "build": "cross-env NODE_ENV=production rollup --config ./rollup.config.js",
+    "w": "rollup --watch --config ./rollup.config.js",
+    "release": "yyr",
+    "prepublishOnly": "npm run prettier & npm run build",
+    "test": "cd ./test/case/base && npm run d"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-yyl-react": "^0.1.9",
+    "prettier": "^2.0.4",
+    "rollup": "^1.9.0",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^4.2.1",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "typescript": "^3.8.3",
+    "yyl-release": "0.1.0"
+  },
+  "name": "react-svga",
+  "description": "svga.lite react version",
+  "repository": "https://github.com/jackness1208/react-svga.git",
+  "author": "liudaojie <liudaojie@yy.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.9.55",
+    "react": "^17.0.1",
+    "svga.lite": "^1.4.2"
+  }
+}

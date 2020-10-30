@@ -1,0 +1,17 @@
+**/js/lib/**
+dist/**
+output/**
+node_modules/**
+*.yml
+.gitignore
+.prettierignore
+yarn.lock
+package-lock.json
+**/*.png
+**/*.jpg
+**/*.bmp
+**/*.jpeg
+**/*.gif
+**/*.pug
+**/*.sh
+**/*.conf
