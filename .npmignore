@@ -5,6 +5,7 @@
 /.rpt2_cache
 /node_modules
 **/node_modules
+**/dist
 /test
 /.tmp
 
