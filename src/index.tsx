@@ -81,10 +81,12 @@ export const Svga = (props: SvgaProps) => {
 
   /** 参数配置 */
   useEffect(() => {
-    if (player && option && svgaData) {
+    if (player && svgaData) {
       player.clear()
       if (!stop) {
-        player.set(option)
+        if (option) {
+          player.set(option)
+        }
         player.mount(svgaData)
         player.start()
       }
