@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "output/index.js",
   "module": "output/index.esm.js",
   "types": "output/index.d.ts",
@@ -40,7 +40,8 @@
     "w": "rollup --watch --config ./rollup.config.js",
     "release": "yyr",
     "prepublishOnly": "npm run prettier & npm run build",
-    "test": "cd ./test/case/base && npm run d"
+    "test": "cd ./test/case/base && npm run d",
+    "test:i": "cd ./test/case/base && yarn install"
   },
   "peerDependencies": {
     "react": ">=16.8.0"

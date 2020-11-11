@@ -1,9 +1,9 @@
 /*!
- * react-svga esm 0.1.1
+ * react-svga esm 0.1.2
  * (c) 2020 - 2020 jackness
  * Released under the MIT License.
  */
-import React, { useRef, useState, useCallback, useEffect } from 'react';
+import React, { useRef, useState, useCallback, useEffect, memo } from 'react';
 import { Parser, Downloader, Player } from 'svga.lite';
 
 /*! *****************************************************************************
@@ -68,7 +68,7 @@ var EVENT_TYPES;
     EVENT_TYPES["END"] = "end";
     EVENT_TYPES["CLEAR"] = "clear";
 })(EVENT_TYPES || (EVENT_TYPES = {}));
-var Svga = function (props) {
+var SvgaAvt = function (props) {
     var src = props.src, on = props.on, stop = props.stop, option = props.option, className = props.className;
     var canvasRef = useRef(null);
     var parser = useState(new Parser())[0];
@@ -97,7 +97,11 @@ var Svga = function (props) {
     /** init Player */
     useEffect(function () {
         if (canvasRef.current) {
-            setPlayer(new Player(canvasRef.current));
+            var player_1 = new Player(canvasRef.current);
+            setPlayer(player_1);
+            return function () {
+                player_1.clear();
+            };
         }
     }, [canvasRef]);
     /** 事件绑定 */
@@ -143,5 +147,6 @@ var Svga = function (props) {
     useEffect(function () { }, [player, downloader, parser, src]);
     return React.createElement("canvas", { ref: canvasRef, className: className });
 };
+var Svga = memo(SvgaAvt);
 
-export { EVENT_TYPES, Svga };
+export { EVENT_TYPES, Svga, SvgaAvt };

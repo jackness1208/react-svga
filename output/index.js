@@ -1,9 +1,18 @@
 /*!
- * react-svga cjs 0.1.1
+ * react-svga cjs 0.1.2
  * (c) 2020 - 2020 jackness
  * Released under the MIT License.
  */
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e,t,n=require("react"),r=(e=n)&&"object"==typeof e&&"default"in e?e.default:e,o=require("svga.lite");(t=exports.EVENT_TYPES||(exports.EVENT_TYPES={})).START="start",t.PROCESS="process",t.PAUSE="pause",t.STOP="stop",t.END="end",t.CLEAR="clear",exports.Svga=function(e){var t=e.src,u=e.on,a=e.stop,s=e.option,c=e.className,E=n.useRef(null),i=n.useState(new o.Parser)[0],f=n.useState(),l=f[0],p=f[1],T=n.useState(new o.Downloader)[0],S=n.useState(),P=S[0],x=S[1],b=n.useCallback((function(e){return t=void 0,n=void 0,o=function(){var t,n;return function(e,t){var n,r,o,u,a={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return u={next:s(0),throw:s(1),return:s(2)},"function"==typeof Symbol&&(u[Symbol.iterator]=function(){return this}),u;function s(u){return function(s){return function(u){if(n)throw new TypeError("Generator is already executing.");for(;a;)try{if(n=1,r&&(o=2&u[0]?r.return:u[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,u[1])).done)return o;switch(r=0,o&&(u=[2&u[0],o.value]),u[0]){case 0:case 1:o=u;break;case 4:return a.label++,{value:u[1],done:!1};case 5:a.label++,r=u[1],u=[0];continue;case 7:u=a.ops.pop(),a.trys.pop();continue;default:if(!((o=(o=a.trys).length>0&&o[o.length-1])||6!==u[0]&&2!==u[0])){a=0;continue}if(3===u[0]&&(!o||u[1]>o[0]&&u[1]<o[3])){a.label=u[1];break}if(6===u[0]&&a.label<o[1]){a.label=o[1],o=u;break}if(o&&a.label<o[2]){a.label=o[2],a.ops.push(u);break}o[2]&&a.ops.pop(),a.trys.pop();continue}u=t.call(e,a)}catch(e){u=[6,e],r=0}finally{n=o=0}if(5&u[0])throw u[1];return{value:u[0]?u[1]:void 0,done:!0}}([u,s])}}}(this,(function(r){switch(r.label){case 0:return T&&i?[4,T.get(e)]:[3,3];case 1:return t=r.sent(),[4,i.do(t)];case 2:n=r.sent(),x(n),r.label=3;case 3:return[2]}}))},new((r=void 0)||(r=Promise))((function(e,u){function a(e){try{c(o.next(e))}catch(e){u(e)}}function s(e){try{c(o.throw(e))}catch(e){u(e)}}function c(t){var n;t.done?e(t.value):(n=t.value,n instanceof r?n:new r((function(e){e(n)}))).then(a,s)}c((o=o.apply(t,n||[])).next())}));
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var React = require('react');
+var React__default = _interopDefault(React);
+var svga_lite = require('svga.lite');
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -18,4 +27,133 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-var t,n,r,o}),[T,i]);return n.useEffect((function(){E.current&&p(new o.Player(E.current))}),[E]),n.useEffect((function(){l&&u&&(l.$on(exports.EVENT_TYPES.CLEAR,(function(){u(exports.EVENT_TYPES.CLEAR)})),l.$on(exports.EVENT_TYPES.END,(function(){u(exports.EVENT_TYPES.END)})),l.$on(exports.EVENT_TYPES.PAUSE,(function(){u(exports.EVENT_TYPES.PAUSE)})),l.$on(exports.EVENT_TYPES.PROCESS,(function(){u(exports.EVENT_TYPES.PROCESS)})),l.$on(exports.EVENT_TYPES.START,(function(){u(exports.EVENT_TYPES.START)})),l.$on(exports.EVENT_TYPES.STOP,(function(){u(exports.EVENT_TYPES.STOP)})))}),[l,u]),n.useEffect((function(){l&&P&&(l.clear(),a||(s&&l.set(s),l.mount(P),l.start()))}),[l,s,P,a]),n.useEffect((function(){b(t)}),[b,t]),n.useEffect((function(){}),[l,T,i,t]),r.createElement("canvas",{ref:E,className:c})};
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+(function (EVENT_TYPES) {
+    EVENT_TYPES["START"] = "start";
+    EVENT_TYPES["PROCESS"] = "process";
+    EVENT_TYPES["PAUSE"] = "pause";
+    EVENT_TYPES["STOP"] = "stop";
+    EVENT_TYPES["END"] = "end";
+    EVENT_TYPES["CLEAR"] = "clear";
+})(exports.EVENT_TYPES || (exports.EVENT_TYPES = {}));
+var SvgaAvt = function (props) {
+    var src = props.src, on = props.on, stop = props.stop, option = props.option, className = props.className;
+    var canvasRef = React.useRef(null);
+    var parser = React.useState(new svga_lite.Parser())[0];
+    var _a = React.useState(), player = _a[0], setPlayer = _a[1];
+    var downloader = React.useState(new svga_lite.Downloader())[0];
+    var _b = React.useState(), svgaData = _b[0], setSvgaData = _b[1];
+    /** get svga */
+    var fetchSvga = React.useCallback(function (url) { return __awaiter(void 0, void 0, void 0, function () {
+        var fileData, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!(downloader && parser)) return [3 /*break*/, 3];
+                    return [4 /*yield*/, downloader.get(url)];
+                case 1:
+                    fileData = _a.sent();
+                    return [4 /*yield*/, parser.do(fileData)];
+                case 2:
+                    data = _a.sent();
+                    setSvgaData(data);
+                    _a.label = 3;
+                case 3: return [2 /*return*/];
+            }
+        });
+    }); }, [downloader, parser]);
+    /** init Player */
+    React.useEffect(function () {
+        if (canvasRef.current) {
+            var player_1 = new svga_lite.Player(canvasRef.current);
+            setPlayer(player_1);
+            return function () {
+                player_1.clear();
+            };
+        }
+    }, [canvasRef]);
+    /** 事件绑定 */
+    React.useEffect(function () {
+        if (player && on) {
+            player.$on(exports.EVENT_TYPES.CLEAR, function () {
+                on(exports.EVENT_TYPES.CLEAR);
+            });
+            player.$on(exports.EVENT_TYPES.END, function () {
+                on(exports.EVENT_TYPES.END);
+            });
+            player.$on(exports.EVENT_TYPES.PAUSE, function () {
+                on(exports.EVENT_TYPES.PAUSE);
+            });
+            player.$on(exports.EVENT_TYPES.PROCESS, function () {
+                on(exports.EVENT_TYPES.PROCESS);
+            });
+            player.$on(exports.EVENT_TYPES.START, function () {
+                on(exports.EVENT_TYPES.START);
+            });
+            player.$on(exports.EVENT_TYPES.STOP, function () {
+                on(exports.EVENT_TYPES.STOP);
+            });
+        }
+    }, [player, on]);
+    /** 参数配置 */
+    React.useEffect(function () {
+        if (player && svgaData) {
+            player.clear();
+            if (!stop) {
+                if (option) {
+                    player.set(option);
+                }
+                player.mount(svgaData);
+                player.start();
+            }
+        }
+    }, [player, option, svgaData, stop]);
+    /** 注入灵魂 */
+    React.useEffect(function () {
+        fetchSvga(src);
+    }, [fetchSvga, src]);
+    React.useEffect(function () { }, [player, downloader, parser, src]);
+    return React__default.createElement("canvas", { ref: canvasRef, className: className });
+};
+var Svga = React.memo(SvgaAvt);
+
+exports.Svga = Svga;
+exports.SvgaAvt = SvgaAvt;

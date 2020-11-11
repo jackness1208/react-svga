@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react'
+import React, { useRef, useState, useEffect, useCallback, memo } from 'react'
 import { Downloader, Parser, Player, options, VideoEntity } from 'svga.lite'
 
 export enum EVENT_TYPES {
@@ -28,7 +28,7 @@ export interface SvgaProps {
   option?: SvgaPlayerOption
 }
 
-export const Svga = (props: SvgaProps) => {
+export const SvgaAvt = (props: SvgaProps) => {
   const { src, on, stop, option, className } = props
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [parser] = useState(new Parser())
@@ -51,7 +51,11 @@ export const Svga = (props: SvgaProps) => {
   /** init Player */
   useEffect(() => {
     if (canvasRef.current) {
-      setPlayer(new Player(canvasRef.current))
+      const player = new Player(canvasRef.current)
+      setPlayer(player)
+      return () => {
+        player.clear()
+      }
     }
   }, [canvasRef])
 
@@ -102,3 +106,5 @@ export const Svga = (props: SvgaProps) => {
 
   return <canvas ref={canvasRef} className={className} />
 }
+
+export const Svga = memo(SvgaAvt)

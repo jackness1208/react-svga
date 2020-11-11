@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { options } from 'svga.lite';
 export declare enum EVENT_TYPES {
     START = "start",
@@ -26,4 +26,5 @@ export interface SvgaProps {
     /** 播放器配置 */
     option?: SvgaPlayerOption;
 }
-export declare const Svga: (props: SvgaProps) => JSX.Element;
+export declare const SvgaAvt: (props: SvgaProps) => JSX.Element;
+export declare const Svga: React.MemoExoticComponent<(props: SvgaProps) => JSX.Element>;
