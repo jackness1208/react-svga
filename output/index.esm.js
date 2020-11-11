@@ -1,5 +1,5 @@
 /*!
- * react-svga esm 0.1.2
+ * react-svga esm 0.1.3
  * (c) 2020 - 2020 jackness
  * Released under the MIT License.
  */
@@ -68,32 +68,29 @@ var EVENT_TYPES;
     EVENT_TYPES["END"] = "end";
     EVENT_TYPES["CLEAR"] = "clear";
 })(EVENT_TYPES || (EVENT_TYPES = {}));
+var parser = new Parser();
+var downloader = new Downloader();
 var SvgaAvt = function (props) {
     var src = props.src, on = props.on, stop = props.stop, option = props.option, className = props.className;
     var canvasRef = useRef(null);
-    var parser = useState(new Parser())[0];
     var _a = useState(), player = _a[0], setPlayer = _a[1];
-    var downloader = useState(new Downloader())[0];
     var _b = useState(), svgaData = _b[0], setSvgaData = _b[1];
     /** get svga */
     var fetchSvga = useCallback(function (url) { return __awaiter(void 0, void 0, void 0, function () {
         var fileData, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    if (!(downloader && parser)) return [3 /*break*/, 3];
-                    return [4 /*yield*/, downloader.get(url)];
+                case 0: return [4 /*yield*/, downloader.get(url)];
                 case 1:
                     fileData = _a.sent();
                     return [4 /*yield*/, parser.do(fileData)];
                 case 2:
                     data = _a.sent();
                     setSvgaData(data);
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
+                    return [2 /*return*/];
             }
         });
-    }); }, [downloader, parser]);
+    }); }, []);
     /** init Player */
     useEffect(function () {
         if (canvasRef.current) {
@@ -144,7 +141,6 @@ var SvgaAvt = function (props) {
     useEffect(function () {
         fetchSvga(src);
     }, [fetchSvga, src]);
-    useEffect(function () { }, [player, downloader, parser, src]);
     return React.createElement("canvas", { ref: canvasRef, className: className });
 };
 var Svga = memo(SvgaAvt);

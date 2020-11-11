@@ -28,25 +28,21 @@ export interface SvgaProps {
   option?: SvgaPlayerOption
 }
 
+const parser = new Parser()
+const downloader = new Downloader()
+
 export const SvgaAvt = (props: SvgaProps) => {
   const { src, on, stop, option, className } = props
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [parser] = useState(new Parser())
   const [player, setPlayer] = useState<Player>()
-  const [downloader] = useState(new Downloader())
   const [svgaData, setSvgaData] = useState<VideoEntity>()
 
   /** get svga */
-  const fetchSvga = useCallback(
-    async (url: string) => {
-      if (downloader && parser) {
-        const fileData = await downloader.get(url)
-        const data = await parser.do(fileData)
-        setSvgaData(data)
-      }
-    },
-    [downloader, parser]
-  )
+  const fetchSvga = useCallback(async (url: string) => {
+    const fileData = await downloader.get(url)
+    const data = await parser.do(fileData)
+    setSvgaData(data)
+  }, [])
 
   /** init Player */
   useEffect(() => {
@@ -101,8 +97,6 @@ export const SvgaAvt = (props: SvgaProps) => {
   useEffect(() => {
     fetchSvga(src)
   }, [fetchSvga, src])
-
-  useEffect(() => {}, [player, downloader, parser, src])
 
   return <canvas ref={canvasRef} className={className} />
 }
