@@ -1,5 +1,6 @@
 **/js/lib/**
 dist/**
+**/dist/**
 output/**
 node_modules/**
 *.yml
@@ -15,3 +16,6 @@ package-lock.json
 **/*.pug
 **/*.sh
 **/*.conf
+**/*.svga
+.rpt2_cache/
+.npmignore
