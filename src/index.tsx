@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback, memo } from 'react'
+import React, { useRef, useState, useEffect, useCallback, memo, useMemo } from 'react'
 import { Downloader, Parser, Player, options, VideoEntity } from 'svga.lite'
 
 export enum EVENT_TYPES {
@@ -102,4 +102,6 @@ export const SvgaAvt = (props: SvgaProps) => {
   return <canvas ref={canvasRef} className={className} />
 }
 
-export const Svga = memo(SvgaAvt)
+export const Svga = memo(SvgaAvt, (preProps, nextProps) => {
+  return preProps.src === nextProps.src
+})

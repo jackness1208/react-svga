@@ -1,5 +1,5 @@
 /*!
- * react-svga esm 0.1.4
+ * react-svga esm 0.1.5
  * (c) 2020 - 2021 jackness
  * Released under the MIT License.
  */
@@ -146,6 +146,8 @@ var SvgaAvt = function (props) {
     }, [src]);
     return React.createElement("canvas", { ref: canvasRef, className: className });
 };
-var Svga = memo(SvgaAvt);
+var Svga = memo(SvgaAvt, function (preProps, nextProps) {
+    return preProps.src === nextProps.src;
+});
 
 export { EVENT_TYPES, Svga, SvgaAvt };
