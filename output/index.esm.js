@@ -1,10 +1,10 @@
 /*!
- * react-svga esm 0.1.3
- * (c) 2020 - 2020 jackness
+ * react-svga esm 0.1.4
+ * (c) 2020 - 2021 jackness
  * Released under the MIT License.
  */
-import React, { useRef, useState, useCallback, useEffect, memo } from 'react';
-import { Parser, Downloader, Player } from 'svga.lite';
+import React, { useRef, useState, useEffect, memo } from 'react';
+import { Player, Parser, Downloader } from 'svga.lite';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -68,29 +68,30 @@ var EVENT_TYPES;
     EVENT_TYPES["END"] = "end";
     EVENT_TYPES["CLEAR"] = "clear";
 })(EVENT_TYPES || (EVENT_TYPES = {}));
-var parser = new Parser();
-var downloader = new Downloader();
-var SvgaAvt = function (props) {
-    var src = props.src, on = props.on, stop = props.stop, option = props.option, className = props.className;
-    var canvasRef = useRef(null);
-    var _a = useState(), player = _a[0], setPlayer = _a[1];
-    var _b = useState(), svgaData = _b[0], setSvgaData = _b[1];
-    /** get svga */
-    var fetchSvga = useCallback(function (url) { return __awaiter(void 0, void 0, void 0, function () {
-        var fileData, data;
+function fetchSvga(url) {
+    return __awaiter(this, void 0, void 0, function () {
+        var parser, downloader, fileData, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, downloader.get(url)];
+                case 0:
+                    parser = new Parser();
+                    downloader = new Downloader();
+                    return [4 /*yield*/, downloader.get(url)];
                 case 1:
                     fileData = _a.sent();
                     return [4 /*yield*/, parser.do(fileData)];
                 case 2:
                     data = _a.sent();
-                    setSvgaData(data);
-                    return [2 /*return*/];
+                    return [2 /*return*/, data];
             }
         });
-    }); }, []);
+    });
+}
+var SvgaAvt = function (props) {
+    var src = props.src, on = props.on, stop = props.stop, option = props.option, className = props.className;
+    var canvasRef = useRef(null);
+    var _a = useState(), player = _a[0], setPlayer = _a[1];
+    var _b = useState(), svgaData = _b[0], setSvgaData = _b[1];
     /** init Player */
     useEffect(function () {
         if (canvasRef.current) {
@@ -139,8 +140,10 @@ var SvgaAvt = function (props) {
     }, [player, option, svgaData, stop]);
     /** 注入灵魂 */
     useEffect(function () {
-        fetchSvga(src);
-    }, [fetchSvga, src]);
+        fetchSvga(src).then(function (d) {
+            setSvgaData(d);
+        });
+    }, [src]);
     return React.createElement("canvas", { ref: canvasRef, className: className });
 };
 var Svga = memo(SvgaAvt);
