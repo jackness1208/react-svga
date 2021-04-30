@@ -1,5 +1,6 @@
 import React from 'react';
 import { options } from 'svga.lite';
+import { ErrorBoundaryProps } from './ErrorBoundary';
 export declare enum EVENT_TYPES {
     START = "start",
     PROCESS = "process",
@@ -25,6 +26,8 @@ export interface SvgaProps {
     stop?: boolean;
     /** 播放器配置 */
     option?: SvgaPlayerOption;
+    /** 错误log */
+    onError?: ErrorBoundaryProps['onError'];
 }
-export declare const SvgaAvt: (props: SvgaProps) => JSX.Element;
-export declare const Svga: React.MemoExoticComponent<(props: SvgaProps) => JSX.Element>;
+export declare const SvgaAvt: React.MemoExoticComponent<(props: SvgaProps) => JSX.Element>;
+export declare const Svga: (props: SvgaProps) => JSX.Element;

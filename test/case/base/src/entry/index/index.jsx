@@ -27,14 +27,27 @@ const TestBox = () => {
   }, [])
   return (
     <>
-      <Svga className='icon' src={info.icon1} option={{ loop: 1 }} on={onHandle} />
-      <Svga className='icon' src={info.icon2} option={{ loop: 1 }} on={onHandle} />
+      <Svga
+        className='icon'
+        src={info.icon1}
+        option={{ loop: 1 }}
+        on={onHandle}
+        onError={(er) => console.log('suprise', er)}
+      />
+      <Svga
+        className='icon'
+        src={info.icon2}
+        option={{ loop: 1 }}
+        on={onHandle}
+        onError={(er) => console.log('suprise2', er)}
+      />
     </>
   )
 }
 
 const App = (
   <div>
+    123
     <TestBox />
   </div>
 )

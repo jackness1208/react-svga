@@ -1,9 +1,9 @@
 /*!
- * react-svga esm 0.1.5
+ * react-svga esm 0.1.6
  * (c) 2020 - 2021 jackness
  * Released under the MIT License.
  */
-import React, { useRef, useState, useEffect, memo } from 'react';
+import React, { memo, useRef, useState, useEffect } from 'react';
 import { Player, Parser, Downloader } from 'svga.lite';
 
 /*! *****************************************************************************
@@ -20,6 +20,31 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 
 function __awaiter(thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -59,6 +84,35 @@ function __generator(thisArg, body) {
     }
 }
 
+var ErrorBoundary = /** @class */ (function (_super) {
+    __extends(ErrorBoundary, _super);
+    function ErrorBoundary(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = { hasError: false };
+        return _this;
+    }
+    ErrorBoundary.getDerivedStateFromError = function () {
+        // 更新 state 使下一次渲染能够显示降级后的 UI
+        return { hasError: true };
+    };
+    ErrorBoundary.prototype.componentDidCatch = function (error) {
+        var onError = this.props.onError;
+        this.setState({
+            hasError: true
+        });
+        if (onError) {
+            onError(error);
+        }
+    };
+    ErrorBoundary.prototype.render = function () {
+        if (this.state.hasError) {
+            return React.createElement(React.Fragment, null);
+        }
+        return this.props.children;
+    };
+    return ErrorBoundary;
+}(React.Component));
+
 var EVENT_TYPES;
 (function (EVENT_TYPES) {
     EVENT_TYPES["START"] = "start";
@@ -87,7 +141,7 @@ function fetchSvga(url) {
         });
     });
 }
-var SvgaAvt = function (props) {
+var SvgaAvt = memo(function (props) {
     var src = props.src, on = props.on, stop = props.stop, option = props.option, className = props.className;
     var canvasRef = useRef(null);
     var _a = useState(), player = _a[0], setPlayer = _a[1];
@@ -145,9 +199,12 @@ var SvgaAvt = function (props) {
         });
     }, [src]);
     return React.createElement("canvas", { ref: canvasRef, className: className });
-};
-var Svga = memo(SvgaAvt, function (preProps, nextProps) {
+}, function (preProps, nextProps) {
     return preProps.src === nextProps.src;
 });
+var Svga = function (props) {
+    return (React.createElement(ErrorBoundary, { onError: props.onError },
+        React.createElement(SvgaAvt, __assign({}, props))));
+};
 
 export { EVENT_TYPES, Svga, SvgaAvt };
