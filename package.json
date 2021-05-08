@@ -65,7 +65,7 @@
   "name": "react-svga",
   "description": "svga.lite react version",
   "repository": "https://github.com/jackness1208/react-svga.git",
-  "author": "liudaojie <liudaojie@yy.com>",
+  "author": "jackness1208",
   "license": "MIT",
   "dependencies": {
     "svga.lite": "^1.4.2"
